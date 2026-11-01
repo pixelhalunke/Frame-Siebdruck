@@ -1,0 +1,71 @@
+/* A light, local CSS-3D scene: the existing film vectors remain the source of truth. */
+.dialog.layer-dialog{inset:16px;transform:none;width:auto;height:calc(100dvh - 32px);max-width:none;max-height:none;padding:0;display:flex;flex-direction:column;overflow:hidden;background:var(--paper)}
+.layer-dialog .dialog-heading{padding:18px 26px 0;margin-bottom:5px;flex-shrink:0}
+.layer-dialog .dialog-heading h2{font-size:25px;font-weight:500;letter-spacing:-1px}
+.layer-dialog .dialog-heading .button{min-width:44px;min-height:44px}
+.dialog.layer-dialog>p{margin:0;padding:0 26px 18px;font-size:12px;max-width:850px;flex-shrink:0}
+.layer-explorer{display:grid;grid-template-columns:minmax(0,1fr) 300px;min-height:0;flex:1;border-top:1px solid var(--line)}
+.layer-visual{display:flex;flex-direction:column;min-width:0;min-height:0;background:#e9ede3;position:relative}
+.layer-viewbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 18px;flex-shrink:0;z-index:1}
+.layer-presets{display:flex;gap:4px;padding:3px;border:1px solid #d3d9ca;border-radius:8px;background:#f7f8f1}
+.layer-dialog .button{min-height:44px}
+.layer-dialog .button-icon{min-width:44px;width:44px}
+.layer-stage{flex:1;min-height:180px;position:relative;display:flex;align-items:center;justify-content:center;perspective:1400px;perspective-origin:50% 50%;overflow:hidden;touch-action:none;user-select:none;cursor:grab;outline-offset:-4px;isolation:isolate;background-image:radial-gradient(#b4c0ab .7px,transparent .7px);background-size:20px 20px}
+.layer-stage:active{cursor:grabbing}
+.layer-floor{position:absolute;left:20%;right:20%;top:60%;height:28%;border-radius:50%;background:radial-gradient(ellipse,#5b69582b,transparent 68%);pointer-events:none}
+.layer-camera{position:relative;flex:none;transform-style:preserve-3d;transform:rotateX(var(--tilt)) rotateZ(var(--turn)) translateZ(var(--stack-center));pointer-events:none}
+.layer-plane{position:absolute;inset:0;transform:translateZ(calc(var(--plane-index)*var(--layer-step)));backface-visibility:visible;transform-style:preserve-3d;border:1px solid #6e826888;pointer-events:none}
+.layer-paper{background:#fffefa;border-color:#c3cbbb;box-shadow:0 6px 20px #2c3b2030}
+.layer-film{background:#fffffc14;border-color:color-mix(in srgb,var(--plane-color) 35%,#64735e);box-shadow:0 0 0 .5px #ffffff70,0 5px 20px #34452908}
+.layer-film>svg{width:100%;height:100%;display:block;overflow:hidden}
+.layer-unbuilt{visibility:hidden}
+.layer-closed .layer-film{background:transparent;box-shadow:none}
+.layer-closed .layer-film .layer-plane-title{display:none}
+.layer-plane-title{position:absolute;left:8px;top:7px;font-size:9px;font-weight:600;letter-spacing:.8px;display:flex;align-items:center;gap:5px;max-width:calc(100% - 16px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#42513b;background:#fffefae8;padding:3px 5px;border:1px solid #d8dfce;border-radius:3px;transform:translateZ(.5px)}
+.layer-plane-title i{width:7px;height:7px;background:var(--plane-color);border:1px solid #3333;border-radius:50%;flex-shrink:0}
+.layer-stage-caption{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:10px;color:#4f6147;letter-spacing:.4px;pointer-events:none}
+.layer-stage-caption>span{margin:0 8px}
+.layer-drag-hint{display:flex;gap:7px;align-items:center;justify-content:center;padding:8px 18px;font-size:11px;line-height:1.6;color:#4f6147;text-align:center;flex-shrink:0}
+.layer-drag-hint>svg{flex-shrink:0}
+.layer-build-control{margin:0 22px 18px;border-top:1px solid #ccd5c4;padding-top:12px;flex-shrink:0}
+.layer-build-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#405238;margin-bottom:8px}
+.layer-build-heading>label{font-weight:600}
+.layer-build-heading>output{font-size:11px}
+.layer-build-buttons{display:flex;align-items:center;gap:14px}
+.layer-build-buttons>input{flex:1;min-width:0;width:100%}
+.layer-dialog input[type=range]{accent-color:#41643b;min-height:44px;cursor:pointer;margin:0}
+.layer-inspector{border-left:1px solid var(--line);padding:24px 22px;overflow-y:auto;background:#f9faf4;min-width:0}
+.layer-order-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#334b32}
+.layer-order-heading .eyebrow{font-size:9px;letter-spacing:1.5px;color:#5d6956;margin-bottom:8px}
+.layer-order-heading h3{font-size:23px;letter-spacing:-.8px;font-weight:500;line-height:1.2}
+.layer-order-note{display:flex;align-items:center;gap:5px;margin:18px 0 10px;color:#5d6956;font-size:11px}
+.layer-order{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.layer-order button{display:flex;align-items:center;gap:10px;text-align:left;min-height:60px;width:100%;padding:9px 10px;border:1px solid #dce1d4;border-radius:7px;background:#fffefa}
+.layer-order button:hover{border-color:#8da17c}
+.layer-order button.current{border-color:#6e8a5b;box-shadow:0 0 0 1px #6e8a5b;background:#edf2e6}
+.layer-order-number{font-size:10px;color:#617156;font-variant-numeric:tabular-nums}
+.layer-order button>i{width:24px;height:30px;flex-shrink:0;border:1px solid #818b7459;border-radius:3px}
+.layer-order .layer-paper-swatch{background:#fffefa;box-shadow:0 2px 2px #21321c1a}
+.layer-order button>span:nth-last-of-type(1){flex:1;min-width:0}
+.layer-order strong{display:block;overflow-wrap:anywhere;font-size:12px;font-weight:600}
+.layer-order small{display:block;margin-top:4px;font-size:10px;color:#5d6956;font-weight:400}
+.layer-order button>svg{color:#456438;flex-shrink:0}
+.layer-order .is-waiting{border-style:dashed;background:#f5f6ef}
+.layer-display{border:0;border-top:1px solid var(--line);padding:20px 0 0;margin:22px 0 0;min-width:0}
+.layer-display legend{float:left;width:100%;font-size:12px;font-weight:600;margin-bottom:10px}
+.layer-display>div{display:flex;gap:6px;clear:both}
+.layer-display .button{flex:1;min-width:0;font-size:11px;padding-inline:8px;white-space:normal}
+.layer-display p,.layer-view-note{font-size:11px;line-height:1.7;color:#5d6956;margin-top:10px}
+.layer-view-controls{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.layer-view-controls label{display:flex;flex-direction:column;font-size:12px;color:#405238}
+.layer-view-controls label>span{display:flex;justify-content:space-between;gap:10px}
+.layer-range-value{font-size:11px;color:#5d6956;font-variant-numeric:tabular-nums}
+.layer-view-note{border-top:1px solid var(--line);margin-top:18px;padding-top:14px}
+.film-3d-trigger{min-height:44px;font-size:12px;flex-shrink:0}
+.film-workbench>.film-view-heading{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 4px;gap:10px}
+.film-view-heading>.canvas-meta{padding:0;display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;height:auto}
+@media(max-width:1000px){.layer-explorer{grid-template-columns:minmax(0,1fr) 270px}.layer-inspector{padding:20px 16px}.layer-viewbar{padding:8px 12px}.layer-presets .button{padding-inline:8px;font-size:11px}.film-workbench>.film-view-heading{padding-inline:12px}.film-3d-trigger{padding-inline:10px;font-size:11px}}
+@media(max-width:700px){.dialog.layer-dialog{inset:0;width:100vw;height:100dvh;border-radius:0;border:0;overflow-y:auto}.layer-dialog .dialog-heading{padding:10px 14px 0}.layer-dialog .dialog-heading h2{font-size:20px;letter-spacing:-.6px}.dialog.layer-dialog>p{font-size:11px;line-height:1.6;padding:0 14px 12px}.layer-explorer{display:flex;flex-direction:column;flex:none;min-height:0}.layer-visual{flex:none;height:540px}.layer-stage{min-height:0}.layer-viewbar{padding:8px 10px}.layer-inspector{overflow:visible;border-left:0;border-top:1px solid var(--line);padding:22px 18px}.layer-build-control{margin:0 14px 14px}.layer-drag-hint{font-size:10px;padding:5px 12px}.layer-order-heading h3{font-size:21px}.layer-display>div{max-width:420px}.layer-stage-caption{font-size:9px}.layer-presets .button{font-size:11px}.layer-dialog .dialog-heading .button{margin-left:auto}.layer-view-controls{gap:8px}.layer-view-note{margin-bottom:4px}}
+@media(prefers-contrast:more){.layer-film{border-color:#354b2a;background:transparent}.layer-order button,.layer-presets{border-color:#53674a}.layer-order button.current{border-color:#263c1c}.layer-stage{background-image:none}.layer-stage-caption,.layer-drag-hint{color:#263b1d}}
+@media(prefers-reduced-motion:reduce){.layer-dialog *{transition:none!important;animation:none!important}}
+@media(max-width:700px){.layer-dialog .dialog-heading{position:sticky;top:0;z-index:3;background:var(--paper);padding-bottom:8px;margin-bottom:0}}

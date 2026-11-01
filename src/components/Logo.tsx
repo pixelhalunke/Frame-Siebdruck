@@ -1,0 +1,1 @@
+export function Logo() { return <span className="logo"><svg width="27" height="27" viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M2 10V2h8M18 2h8v8M26 18v8h-8M10 26H2v-8" stroke="currentColor" strokeWidth="3"/><path d="M9 20V8h12M9 13h9" stroke="currentColor" strokeWidth="3"/></svg>FRAME<span className="logo-beta">BETA</span></span>; }
